@@ -36,7 +36,16 @@ export class CreateEvents1627650925750 implements MigrationInterface {
                         name: "end_date",
                         type: "varchar",
                       },
-
+                      {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                      },
+                      {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                      },
                 ]
 
             })
