@@ -45,4 +45,4 @@ interface IEventRequest {
     
 
   }
-  export { CreateEventService}
+  export { CreateEventService }
