@@ -13,6 +13,10 @@ export class CreateEvents1627650925750 implements MigrationInterface {
                         isPrimary: true,
                       },
                       {
+                        name: "created_by",
+                        type: "uuid",
+                      },
+                      {
                         name: "description",
                         type: "varchar",
                       },
