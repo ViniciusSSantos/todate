@@ -20,6 +20,6 @@ router.post("/events", createEventController.handle)
 
 router.get("/user/events",listCreatedByEventsController.handle)
 router.put("/user/events", updateEventController.handle)
-router.delete("/user/events", deleteEventController.handle )
+router.delete("/user/events", deleteEventController.handle)
 
 export{router}
