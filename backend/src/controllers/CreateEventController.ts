@@ -4,7 +4,8 @@ import { CreateEventService } from "../services/CreateEventService";
 
 class CreateEventController {
     async handle(request: Request, response: Response) {
-      const { description,
+      const { created_by,
+        description,
         start_time,
         end_time,
         start_date,
@@ -13,6 +14,7 @@ class CreateEventController {
       const createEventService = new CreateEventService();
   
       const event = await createEventService.execute({
+        created_by,
         description,
         start_time,
         end_time,
