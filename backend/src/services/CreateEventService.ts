@@ -2,6 +2,7 @@ import { getCustomRepository, Equal } from "typeorm";
 import { EventsRepositories } from "../repositories/EventsRepositories";
 
 interface IEventRequest {
+    created_by: string;
     description: string;
     start_time: string;
     end_time: string;
@@ -11,7 +12,7 @@ interface IEventRequest {
 
 
   class CreateEventService{
-    async execute({description, start_time, end_time, start_date, end_date}:IEventRequest){
+    async execute({created_by, description, start_time, end_time, start_date, end_date}:IEventRequest){
         const eventsRepository = getCustomRepository(EventsRepositories);
 
         if(!description){
@@ -19,10 +20,13 @@ interface IEventRequest {
         }
 
         const eventAlreadyExists = await eventsRepository.findOne({
-            start_time,
-            end_time,
-            start_date,
-            end_date,
+            where:{
+                start_time: start_time,
+                end_time:end_time,
+                start_date:start_date,
+                end_date:end_date,
+            }
+            
         })
 
         if(eventAlreadyExists){
@@ -30,6 +34,7 @@ interface IEventRequest {
         }
 
         const event = eventsRepository.create({
+            created_by,
             description,
             start_time,
             end_time,
