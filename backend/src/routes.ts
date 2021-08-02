@@ -19,8 +19,8 @@ router.post("/users", createUserController.handle),
 router.post("/events", createEventController.handle)
 router.post("/login", getUserController.handle);
 
-router.get("/user/:id/events",listCreatedByEventsController.handle)
-router.put("/user/:id/events", updateEventController.handle)
-router.delete("/user/:id/events", deleteEventController.handle)
+router.get("/user/:id",listCreatedByEventsController.handle)
+router.put("/user/:id", updateEventController.handle)
+router.delete("/user/:id", deleteEventController.handle)
 
 export{router}
