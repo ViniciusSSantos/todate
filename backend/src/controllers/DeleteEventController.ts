@@ -3,11 +3,11 @@ import { DeleteEventService } from "../services/DeleteEventService";
 
 class DeleteEventController{
     async handle(request: Request, response: Response){
-        const{id} = request.body
+        const{id} = request.params;
 
         const deleteEventService = new DeleteEventService();
         
-        const deletedEvent = await deleteEventService.execute(id)
+        const deletedEvent = await deleteEventService.execute(id);
 
         return response.json(deletedEvent);
 
