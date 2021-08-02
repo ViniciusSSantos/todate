@@ -4,11 +4,11 @@ import { ListCreatedByEventsService } from "../services/ListCreatedByEventsServi
 
 class ListCreatedByEventsController{
     async handle(request: Request, response: Response){
-        const { user_id } = request.body;
+        const { id } = request.params;
 
         const listCreatedByEventsService = new ListCreatedByEventsService()
 
-        const eventsCreatedByUser = await listCreatedByEventsService.execute(user_id)
+        const eventsCreatedByUser = await listCreatedByEventsService.execute(id)
         
 
         return response.json(eventsCreatedByUser);
