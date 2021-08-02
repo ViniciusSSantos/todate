@@ -1,9 +1,10 @@
 import React, { FormEvent, useState } from "react";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
+import '../styles/pages/signup.css'
 
 
-export default function SignUp(){
+export default function Login(){
     const history = useHistory()
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
@@ -15,10 +16,13 @@ export default function SignUp(){
         api.post("login", {
             email: email,
             password: password
+        }).then((response) => {
+          const {id} = response.data;
+          alert('login realizado com sucesso!')
+          history.push(`/user/${id}`)
         })
         
-        alert('Cadastro realizado com sucesso!')
-        history.push('/landing')
+       
         
     }
 
