@@ -1,3 +1,4 @@
+import { Console } from "console";
 import React, { FormEvent, useEffect, useState } from "react";
 import {useParams } from 'react-router-dom'
 import api from "../services/api";
@@ -50,7 +51,7 @@ export default function Events(){
             end_date: end_date,
         })
 
-        alert("evento criado com sucesso")
+        alert('evento realizado com sucesso!')
     
     }
 
@@ -80,7 +81,9 @@ export default function Events(){
               return(
                   <main>
                       <ol className="gradient-list" key = {event.id} >
+                          
                           <h1> INFORMAÇÕES DO EVENTO</h1>
+                          <button onClick = {() => HandleDelete(event.id)}>aperte aqui para deletar</button>
                           <li>{event.description} </li>
                           <li>{event.start_date} </li>
                           <li>{event.end_date} </li>
