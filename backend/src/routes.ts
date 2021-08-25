@@ -22,10 +22,13 @@ const authenticateUserController = new AuthenticateUserController()
 
 
 
-// POST ROUTES
+// POST USER ROUTES
 router.post("/createusers",  createUserController.handle),
-router.post("/createevents", ensureAuthenticated, createEventController.handle)
 router.post("/login", authenticateUserController.handle);
+
+
+// POST EVENTS ROUTES 
+router.post("/createevents", ensureAuthenticated, createEventController.handle)
 
 // GET EVENTS ROUTES 
 router.get("/user/events", ensureAuthenticated, listCreatedByEventsController.handle)
