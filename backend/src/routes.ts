@@ -23,8 +23,8 @@ const authenticateUserController = new AuthenticateUserController()
 
 
 // POST ROUTES
-router.post("/createusers", createUserController.handle),
-router.post("/createevents", createEventController.handle)
+router.post("/createusers",  createUserController.handle),
+router.post("/createevents", ensureAuthenticated, createEventController.handle)
 router.post("/login", authenticateUserController.handle);
 
 // GET EVENTS ROUTES 
@@ -34,7 +34,7 @@ router.get("/user/events", ensureAuthenticated, listCreatedByEventsController.ha
 router.put("/user/events", ensureAuthenticated, updateEventController.handle)
 
 // DELETE EVENTS ROUTES
-router.delete("/user/events",ensureAuthenticated, deleteEventController.handle)
+router.delete("/user/events", ensureAuthenticated, deleteEventController.handle)
 
 
 export{router}
