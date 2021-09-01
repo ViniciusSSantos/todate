@@ -1,4 +1,4 @@
-<form [formGroup]= "signupForm" >
+<form [formGroup]= "signupForm" (ngSubmit)="onSubmit()">
 
 <div class="form-group">
     <div class="col-sm-12">
@@ -22,4 +22,5 @@
 </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>
+<app-form-debug [form]="signupForm"></app-form-debug>
 </form>
