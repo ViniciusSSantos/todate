@@ -9,7 +9,6 @@ import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
 
 
 import { AuthService } from './services/auth.service';
