@@ -12,12 +12,15 @@ import { LandingComponent } from './landing/landing.component';
 
 
 import { AuthService } from './services/auth.service';
+import { CreateUsersService } from './services/create-users.service';
+import { EventsComponent } from './events/events.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
+    EventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { AuthService } from './services/auth.service';
     SignupModule,
     LoginModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, CreateUsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
