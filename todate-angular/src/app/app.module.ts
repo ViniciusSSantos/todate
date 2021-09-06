@@ -1,4 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { EventsModule } from './events/events.module';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,14 +15,13 @@ import { LandingComponent } from './landing/landing.component';
 
 import { AuthService } from './services/auth.service';
 import { CreateUsersService } from './services/create-users.service';
-import { EventsComponent } from './events/events.component';
+import { EventsService } from './events/services/events.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    EventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +30,10 @@ import { EventsComponent } from './events/events.component';
     AppRoutingModule,    
     HttpClientModule,
     SignupModule,
-    LoginModule
+    LoginModule,
+    EventsModule
   ],
-  providers: [AuthService, CreateUsersService],
+  providers: [AuthService, CreateUsersService, EventsService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
