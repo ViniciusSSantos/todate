@@ -1,7 +1,7 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
-  constructor(private fb: FormBuilder) { 
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    ) { 
     this.loginForm = this.fb.group({     
       email: [null],
       password: [null],
@@ -24,22 +27,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+
     console.log(this.loginForm.value);
-  }
-
-
- /*  login() {
-    const val = this.form.value;
-
-    if (val.email && val.password) {
-        this.authService.login(val.email, val.password)
-            .subscribe(
-                () => {
-                    console.log("User is logged in");
-                    
-                }
-            );
-    }
-  } */
+    const loginValue = this.loginForm.value;
+    this.authService.login(loginValue.email, loginValue.password)   
+    
+  } 
 
 }
